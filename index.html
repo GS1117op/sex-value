@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEX偏差値測定 | あなたのSEX力を数値化</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container fade-in">
+    <div class="top-header">
+      <div class="logo-badge">🔥 SEX HENSACHI</div>
+      <h1 class="main-title">SEX偏差値<br>測定</h1>
+      <p class="sub-title">あなたのSEX力を科学的に数値化</p>
+    </div>
+
+    <div class="card">
+      <ul class="feature-list">
+        <li>
+          <div class="icon">📊</div>
+          <span>全16問の設問に答えるだけ。あなたの偏差値を算出します</span>
+        </li>
+        <li>
+          <div class="icon">⚡</div>
+          <span>所要時間は約5分。知識・経験・肉体・属性の4軸で診断</span>
+        </li>
+        <li>
+          <div class="icon">🎯</div>
+          <span>男性版・女性版それぞれに最適化された設問を用意</span>
+        </li>
+        <li>
+          <div class="icon">🏆</div>
+          <span>あなたはどのランクに？全国の平均は偏差値50</span>
+        </li>
+      </ul>
+
+      <p class="gender-heading">性別を選んでスタート</p>
+      <div class="gender-btns">
+        <button class="btn-gender male" onclick="startQuiz('male')">
+          <span class="gender-icon">♂</span>
+          <span class="gender-label">男性</span>
+          <span class="gender-sub">として診断</span>
+        </button>
+        <button class="btn-gender female" onclick="startQuiz('female')">
+          <span class="gender-icon">♀</span>
+          <span class="gender-label">女性</span>
+          <span class="gender-sub">として診断</span>
+        </button>
+      </div>
+      <p class="disclaimer">※ このサイトは18歳以上を対象とした娯楽・教育目的のコンテンツです</p>
+    </div>
+
+    <!-- 関連サービス -->
+    <div class="related-section">
+      <p class="related-heading">関連サービス</p>
+      <div class="related-grid">
+        <a href="https://open-love-sepia.vercel.app/" target="_blank" rel="noopener" class="related-card openlove">
+          <div class="related-card-icon">💞</div>
+          <div class="related-card-body">
+            <div class="related-card-name">OpenLove</div>
+            <div class="related-card-desc">恋愛・パートナー探しのプラットフォーム</div>
+          </div>
+          <div class="related-card-arrow">→</div>
+        </a>
+        <a href="https://delightful-conkies-4f52ec.netlify.app/" target="_blank" rel="noopener" class="related-card type16">
+          <div class="related-card-icon">🧬</div>
+          <div class="related-card-body">
+            <div class="related-card-name">SEX 16タイプ診断</div>
+            <div class="related-card-desc">あなたのSEXタイプを16種類で分類</div>
+          </div>
+          <div class="related-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- フッター -->
+    <div class="sponsored-ad-frame" aria-label="SPONSORED">
+      <p class="sponsored-label">SPONSORED</p>
+      <div class="sponsored-grid">
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1SPS+F75DPU+5GRC+5ZMCH" target="_blank" rel="nofollow sponsored">
+            <img src="https://www27.a8.net/svt/bgt?aid=260424352919&wid=001&eno=01&mid=s00000025500001006000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www15.a8.net/0.gif?a8mat=4B1SPS+F75DPU+5GRC+5ZMCH" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1WLZ+FQ792Q+4YJS+60OXD" target="_blank" rel="nofollow sponsored">
+            <img src="https://www24.a8.net/svt/bgt?aid=260429399951&wid=001&eno=01&mid=s00000023140001011000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www18.a8.net/0.gif?a8mat=4B1WLZ+FQ792Q+4YJS+60OXD" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1SPS+EC6U9E+32P0+HWAG1" target="_blank" rel="nofollow sponsored">
+            <img src="https://www26.a8.net/svt/bgt?aid=260424352867&wid=001&eno=01&mid=s00000014346003006000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www10.a8.net/0.gif?a8mat=4B1SPS+EC6U9E+32P0+HWAG1" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1WLZ+G7GTMA+3LOM+1BOLU9" target="_blank" rel="nofollow sponsored">
+            <img src="https://www29.a8.net/svt/bgt?aid=260429399980&wid=001&eno=01&mid=s00000016807008009000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www12.a8.net/0.gif?a8mat=4B1WLZ+G7GTMA+3LOM+1BOLU9" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <a href="https://x.com/openlove_JP" target="_blank" rel="noopener" class="x-follow-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.254 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+        @openlove_JP をフォロー
+      </a>
+      <p class="footer-copy">© 2025 OpenLove. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function startQuiz(gender) {
+      sessionStorage.setItem('sv_gender', gender);
+      window.location.href = 'questions.html';
+    }
+  </script>
+</body>
+</html>

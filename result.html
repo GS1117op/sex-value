@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEX偏差値測定 | 結果</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container fade-in">
+    <div class="result-header">
+      <p class="result-title">あなたのSEX偏差値は</p>
+    </div>
+
+    <div class="hensachi-display">
+      <div class="hensachi-label">HENSACHI SCORE</div>
+      <div class="hensachi-value count-anim" id="hensachi-value">—</div>
+      <div class="hensachi-rank" id="hensachi-rank">計算中…</div>
+    </div>
+
+    <div class="gauge-wrap">
+      <div class="gauge-track">
+        <div class="gauge-fill" id="gauge-fill" style="width: 0%"></div>
+        <div class="gauge-pointer" id="gauge-pointer" style="left: 0%"></div>
+      </div>
+      <div class="gauge-labels">
+        <span>20</span>
+        <span>35</span>
+        <span>50<br><small>平均</small></span>
+        <span>65</span>
+        <span>80</span>
+      </div>
+    </div>
+
+    <div class="result-desc-card">
+      <div class="rank-name" id="rank-name"></div>
+      <div class="rank-desc" id="rank-desc"></div>
+    </div>
+
+    <div class="score-breakdown">
+      <h3>カテゴリ別スコア</h3>
+      <div class="score-bars" id="score-bars"></div>
+    </div>
+
+    <button class="btn-retry" onclick="location.href='index.html'">もう一度診断する</button>
+    <button class="share-btn" id="share-btn">X (Twitter) でシェア</button>
+
+    <!-- 関連サービス -->
+    <div class="related-section">
+      <p class="related-heading">他の診断も試してみる</p>
+      <div class="related-grid">
+        <a href="https://open-love-sepia.vercel.app/" target="_blank" rel="noopener" class="related-card openlove">
+          <div class="related-card-icon">💞</div>
+          <div class="related-card-body">
+            <div class="related-card-name">OpenLove</div>
+            <div class="related-card-desc">恋愛・パートナー探しのプラットフォーム</div>
+          </div>
+          <div class="related-card-arrow">→</div>
+        </a>
+        <a href="https://delightful-conkies-4f52ec.netlify.app/" target="_blank" rel="noopener" class="related-card type16">
+          <div class="related-card-icon">🧬</div>
+          <div class="related-card-body">
+            <div class="related-card-name">SEX 16タイプ診断</div>
+            <div class="related-card-desc">あなたのSEXタイプを16種類で分類</div>
+          </div>
+          <div class="related-card-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- フッター -->
+    <div class="sponsored-ad-frame" aria-label="SPONSORED">
+      <p class="sponsored-label">SPONSORED</p>
+      <div class="sponsored-grid">
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1SPS+F75DPU+5GRC+5ZMCH" target="_blank" rel="nofollow sponsored">
+            <img src="https://www27.a8.net/svt/bgt?aid=260424352919&wid=001&eno=01&mid=s00000025500001006000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www15.a8.net/0.gif?a8mat=4B1SPS+F75DPU+5GRC+5ZMCH" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1WLZ+FQ792Q+4YJS+60OXD" target="_blank" rel="nofollow sponsored">
+            <img src="https://www24.a8.net/svt/bgt?aid=260429399951&wid=001&eno=01&mid=s00000023140001011000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www18.a8.net/0.gif?a8mat=4B1WLZ+FQ792Q+4YJS+60OXD" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1SPS+EC6U9E+32P0+HWAG1" target="_blank" rel="nofollow sponsored">
+            <img src="https://www26.a8.net/svt/bgt?aid=260424352867&wid=001&eno=01&mid=s00000014346003006000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www10.a8.net/0.gif?a8mat=4B1SPS+EC6U9E+32P0+HWAG1" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+        <div class="sponsored-card">
+          <a href="https://px.a8.net/svt/ejp?a8mat=4B1WLZ+G7GTMA+3LOM+1BOLU9" target="_blank" rel="nofollow sponsored">
+            <img src="https://www29.a8.net/svt/bgt?aid=260429399980&wid=001&eno=01&mid=s00000016807008009000&mc=1" width="300" height="250" alt="">
+          </a>
+          <img src="https://www12.a8.net/0.gif?a8mat=4B1WLZ+G7GTMA+3LOM+1BOLU9" width="1" height="1" alt="" class="tracking-pixel">
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <a href="https://x.com/openlove_JP" target="_blank" rel="noopener" class="x-follow-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.254 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+        @openlove_JP をフォロー
+      </a>
+      <p class="footer-copy">© 2025 OpenLove. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const ranks = [
+      { min: 75, name: '🏆 SEXの神', label: '偏差値75以上', desc: '圧倒的なSEX力の持ち主。知識・経験・肉体・属性のすべてがトップクラスです。パートナーを至福の境地へ導く天才的な素養を持つ、100人に2〜3人しかいない真のSEXマスター。' },
+      { min: 65, name: '⭐ エリートラバー', label: '偏差値65〜74', desc: '上位15%に入る高い総合力を誇ります。4カテゴリいずれも水準以上で、パートナーの満足度は非常に高いはず。さらに磨けば神の域も目指せます。' },
+      { min: 55, name: '💫 デキるプレイヤー', label: '偏差値55〜64', desc: '平均を大きく上回る実力の持ち主。経験・肉体・知識のバランスが取れており、安定したクオリティを提供できます。あと一歩で上位層へ。' },
+      { min: 45, name: '✨ アベレージ', label: '偏差値45〜54', desc: 'ちょうど平均レベルのSEX力です。基本は押さえているものの、まだ伸びしろがたくさんあります。弱いカテゴリを集中強化するとスコアが大きく伸びます。' },
+      { min: 35, name: '📚 修行中', label: '偏差値35〜44', desc: '平均以下ではありますが、気づいているだけで大きなアドバンテージ。カテゴリ別スコアを確認して、弱点を把握するところから始めましょう。' },
+      { min: 0,  name: '🌱 ビギナー', label: '偏差値34以下', desc: 'まだ旅の始まり。焦らなくて大丈夫です。SEXは知識と経験とコミュニケーションで確実に上達します。今日から少しずつ学んでいきましょう！' },
+    ];
+
+    const catColors = {
+      '知識': 'linear-gradient(90deg, #a78bfa, #7c3aed)',
+      '経験': 'linear-gradient(90deg, #f472b6, #db2777)',
+      '肉体': 'linear-gradient(90deg, #fb923c, #ea580c)',
+      '属性': 'linear-gradient(90deg, #34d399, #059669)',
+    };
+
+    const catOrder = ['知識', '経験', '肉体', '属性'];
+
+    function calcHensachi(total, max) {
+      const ratio = total / max;
+      const base = 20 + ratio * 60;
+      const noise = (Math.random() * 6) - 3;
+      return Math.round(Math.min(82, Math.max(18, base + noise)));
+    }
+
+    function init() {
+      if (!sessionStorage.getItem('sv_total')) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      const total = parseInt(sessionStorage.getItem('sv_total'));
+      const max   = parseInt(sessionStorage.getItem('sv_max'));
+      const catScores = JSON.parse(sessionStorage.getItem('sv_catScores') || '{}');
+
+      const hensachi = calcHensachi(total, max);
+      const rank = ranks.find(r => hensachi >= r.min);
+
+      // Animate counter
+      const valueEl = document.getElementById('hensachi-value');
+      let count = 0;
+      const timer = setInterval(() => {
+        count += Math.ceil(hensachi / 40);
+        if (count >= hensachi) { count = hensachi; clearInterval(timer); }
+        valueEl.textContent = count;
+      }, 1200 / 40);
+
+      document.getElementById('hensachi-rank').textContent = rank.label;
+
+      // Gauge (20=0%, 80=100%)
+      const pct = Math.min(100, Math.max(0, (hensachi - 20) / 60 * 100));
+      setTimeout(() => {
+        document.getElementById('gauge-fill').style.width = pct + '%';
+        document.getElementById('gauge-pointer').style.left = pct + '%';
+      }, 300);
+
+      document.getElementById('rank-name').textContent = rank.name;
+      document.getElementById('rank-desc').textContent = rank.desc;
+
+      // Category bars
+      const barsEl = document.getElementById('score-bars');
+      barsEl.innerHTML = '';
+      catOrder.forEach(cat => {
+        const val = catScores[cat];
+        if (!val) return;
+        const pctCat = val.max > 0 ? Math.round((val.score / val.max) * 100) : 0;
+        const item = document.createElement('div');
+        item.className = 'score-bar-item';
+        item.innerHTML = `
+          <div class="score-bar-label">
+            <span>${cat}</span>
+            <span>${pctCat}%</span>
+          </div>
+          <div class="score-bar-track">
+            <div class="score-bar-fill" style="width: 0%; background: ${catColors[cat]}"></div>
+          </div>
+        `;
+        barsEl.appendChild(item);
+        setTimeout(() => {
+          item.querySelector('.score-bar-fill').style.width = pctCat + '%';
+        }, 600);
+      });
+
+      // Share
+      document.getElementById('share-btn').addEventListener('click', () => {
+        const gender = sessionStorage.getItem('sv_gender') === 'female' ? '女性' : '男性';
+        const text = `【${gender}】私のSEX偏差値は ${hensachi} でした！${rank.name}\n#SEX偏差値測定`;
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`);
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
