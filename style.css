@@ -668,6 +668,16 @@ body::before {
   box-shadow: 0 6px 24px rgba(155, 45, 214, 0.2);
 }
 
+.related-card.sexvalue {
+  background: rgba(42, 17, 69, 0.7);
+  border-color: rgba(255, 77, 141, 0.2);
+}
+
+.related-card.sexvalue:hover {
+  border-color: rgba(255, 198, 41, 0.6);
+  box-shadow: 0 6px 24px rgba(255, 198, 41, 0.18);
+}
+
 .related-card-icon {
   font-size: 28px;
   flex-shrink: 0;
