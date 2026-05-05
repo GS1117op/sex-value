@@ -22,7 +22,10 @@
       <div class="q-number" id="q-number">QUESTION 01</div>
       <div class="q-text" id="q-text"></div>
       <div class="choices" id="choices"></div>
-      <button class="btn-next" id="btn-next" onclick="nextQuestion()">次の質問へ →</button>
+      <div class="question-actions">
+        <button class="btn-back" id="btn-back" onclick="goBack()" type="button">← 前の質問へ</button>
+        <span class="auto-hint" id="auto-hint">選ぶと自動で進みます</span>
+      </div>
     </div>
     <div class="related-section">
       <p class="related-heading">&#38306;&#36899;&#12469;&#12540;&#12499;&#12473;</p>
@@ -251,9 +254,17 @@
 
     let current = 0;
     let scores = [];
-    let selectedScore = null;
+    let answerIndexes = [];
+    let isAdvancing = false;
+    let advanceTimer = null;
 
     function render() {
+      if (advanceTimer) {
+        clearTimeout(advanceTimer);
+        advanceTimer = null;
+      }
+      isAdvancing = false;
+
       const q = questions[current];
       document.getElementById('q-counter').textContent = `Q${current + 1} / ${TOTAL}`;
       document.getElementById('q-category').textContent = categoryLabels[q.category] || q.category;
@@ -269,13 +280,15 @@
         btn.className = 'choice-btn';
         btn.innerHTML = `<span class="choice-label">${c.label}</span><span>${c.text}</span>`;
         btn.addEventListener('click', () => selectChoice(i, c.score, btn));
+        if (answerIndexes[current] === i) {
+          btn.classList.add('selected');
+        }
         choicesEl.appendChild(btn);
       });
 
-      selectedScore = null;
-      const nextBtn = document.getElementById('btn-next');
-      nextBtn.classList.remove('active');
-      nextBtn.textContent = current === TOTAL - 1 ? '結果を見る 🎉' : '次の質問へ →';
+      const backBtn = document.getElementById('btn-back');
+      backBtn.disabled = current === 0;
+      document.getElementById('auto-hint').textContent = current === TOTAL - 1 ? '選ぶと結果を表示します' : '選ぶと自動で進みます';
 
       const card = document.getElementById('q-card');
       card.classList.remove('fade-in');
@@ -284,15 +297,36 @@
     }
 
     function selectChoice(index, score, clickedBtn) {
+      if (isAdvancing) return;
+
       document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
       clickedBtn.classList.add('selected');
-      selectedScore = score;
-      document.getElementById('btn-next').classList.add('active');
+      scores[current] = score;
+      answerIndexes[current] = index;
+
+      isAdvancing = true;
+      document.querySelectorAll('.choice-btn').forEach(b => {
+        b.disabled = true;
+        b.classList.add('locked');
+      });
+
+      advanceTimer = setTimeout(() => {
+        nextQuestion();
+      }, 420);
+    }
+
+    function goBack() {
+      if (current === 0) return;
+      if (advanceTimer) {
+        clearTimeout(advanceTimer);
+        advanceTimer = null;
+      }
+      current--;
+      render();
     }
 
     function nextQuestion() {
-      if (selectedScore === null) return;
-      scores.push(selectedScore);
+      if (scores[current] === undefined || scores[current] === null) return;
 
       if (current < TOTAL - 1) {
         current++;

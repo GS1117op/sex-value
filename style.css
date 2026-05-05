@@ -329,6 +329,12 @@ body::before {
   border-color: var(--pink);
   background: rgba(255, 77, 141, 0.15);
   color: #fff;
+  transform: translateX(4px);
+  box-shadow: 0 8px 24px rgba(255, 77, 141, 0.16);
+}
+
+.choice-btn.locked {
+  cursor: default;
 }
 
 .choice-btn .choice-label {
@@ -348,6 +354,46 @@ body::before {
 .choice-btn.selected .choice-label {
   background: var(--pink);
   color: #fff;
+}
+
+.question-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.btn-back {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover:not(:disabled) {
+  color: var(--pink-light);
+  border-color: rgba(255, 77, 141, 0.45);
+  background: rgba(255, 77, 141, 0.1);
+}
+
+.btn-back:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.auto-hint {
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: right;
 }
 
 .btn-next {
