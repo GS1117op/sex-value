@@ -59,218 +59,195 @@
   </div>
 
   <script>
-    const TOTAL = 16;
-
     const maleQuestions = [
-      // 知識 (4問)
-      { category: '知識', text: '女性が最も感じやすい体位は？', choices: [
-        { label: 'A', text: '騎乗位', score: 10 },
-        { label: 'B', text: 'バック', score: 7 },
-        { label: 'C', text: '正常位', score: 4 },
-        { label: 'D', text: '座位', score: 5 },
+      { category: 'communication', text: '相手が少し緊張している様子のとき', choices: [
+        { label: 'A', text: '軽くボディタッチして距離を縮める', score: 7 },
+        { label: 'B', text: '会話で安心させる', score: 10 },
+        { label: 'C', text: '雰囲気に任せる', score: 8 },
+        { label: 'D', text: '自分のペースで進める', score: 6 },
       ]},
-      { category: '知識', text: '女性の理想的な前戯時間は？', choices: [
-        { label: 'A', text: '3分', score: 1 },
-        { label: 'B', text: '10分', score: 5 },
-        { label: 'C', text: '20分', score: 10 },
-        { label: 'D', text: '30分以上', score: 8 },
+      { category: 'timing', text: '相手の反応が微妙なとき', choices: [
+        { label: 'A', text: 'そのまま続ける', score: 6 },
+        { label: 'B', text: 'テンポや強さを変える', score: 10 },
+        { label: 'C', text: '一度様子を見る', score: 8 },
+        { label: 'D', text: '気にしない', score: 5 },
       ]},
-      { category: '知識', text: '女性がセックスで一番重視するのは？', choices: [
-        { label: 'A', text: 'テクニック', score: 6 },
-        { label: 'B', text: '時間の長さ', score: 5 },
-        { label: 'C', text: '愛情表現・コミュニケーション', score: 10 },
-        { label: 'D', text: '相手の体型', score: 1 },
+      { category: 'communication', text: '相手の「気持ちよさ」を確認する方法', choices: [
+        { label: 'A', text: '言葉で聞く', score: 8 },
+        { label: 'B', text: '反応を見て判断', score: 10 },
+        { label: 'C', text: '流れに任せる', score: 7 },
+        { label: 'D', text: 'あまり確認しない', score: 5 },
       ]},
-      { category: '知識', text: '女性の膣の平均的な深さは？', choices: [
-        { label: 'A', text: '約3cm', score: 1 },
-        { label: 'B', text: '約7cm', score: 10 },
-        { label: 'C', text: '約12cm', score: 6 },
-        { label: 'D', text: '約20cm', score: 1 },
+      { category: 'communication', text: '褒め方', choices: [
+        { label: 'A', text: '外見中心', score: 7 },
+        { label: 'B', text: '行為中に軽く褒める', score: 9 },
+        { label: 'C', text: '行動や雰囲気を具体的に褒める', score: 10 },
+        { label: 'D', text: 'あまり言わない', score: 6 },
       ]},
-      // 経験 (4問)
-      { category: '経験', text: 'これまでのパートナー人数は？', choices: [
-        { label: 'A', text: '0人', score: 3 },
-        { label: 'B', text: '1〜3人', score: 7 },
-        { label: 'C', text: '4〜10人', score: 10 },
-        { label: 'D', text: '11人以上', score: 8 },
+      { category: 'timing', text: 'キスのタイミング', choices: [
+        { label: 'A', text: '自分の感覚でいく', score: 7 },
+        { label: 'B', text: '相手の雰囲気を見る', score: 10 },
+        { label: 'C', text: '流れ任せ', score: 8 },
+        { label: 'D', text: 'タイミングを待ちすぎる', score: 6 },
       ]},
-      { category: '経験', text: '一週間のセックス頻度は？', choices: [
-        { label: 'A', text: 'ほぼなし', score: 3 },
-        { label: 'B', text: '週1', score: 7 },
-        { label: 'C', text: '週2〜3', score: 10 },
-        { label: 'D', text: 'ほぼ毎日', score: 8 },
+      { category: 'timing', text: '雰囲気づくり', choices: [
+        { label: 'A', text: '特に意識しない', score: 5 },
+        { label: 'B', text: '場に合わせる', score: 8 },
+        { label: 'C', text: '照明や距離感まで意識する', score: 10 },
+        { label: 'D', text: '相手任せ', score: 6 },
       ]},
-      { category: '経験', text: '経験したことある上級プレイは？', choices: [
-        { label: 'A', text: 'コスプレ・ロールプレイ', score: 7 },
-        { label: 'B', text: '野外・ホテル外プレイ', score: 6 },
-        { label: 'C', text: '縛り・SM系', score: 9 },
-        { label: 'D', text: '複数プレイ', score: 8 },
+      { category: 'lead', text: '盛り上がってきたとき', choices: [
+        { label: 'A', text: '一気に進める', score: 8 },
+        { label: 'B', text: '様子を見ながら進める', score: 10 },
+        { label: 'C', text: '少し間を取る', score: 9 },
+        { label: 'D', text: '流れに任せる', score: 7 },
       ]},
-      { category: '経験', text: 'セックスで最長どれくらい続けた？', choices: [
-        { label: 'A', text: '15分以内', score: 4 },
-        { label: 'B', text: '30分程度', score: 7 },
-        { label: 'C', text: '1時間', score: 10 },
-        { label: 'D', text: '2時間以上', score: 9 },
+      { category: 'lead', text: '主導権の取り方', choices: [
+        { label: 'A', text: '基本自分主導', score: 9 },
+        { label: 'B', text: '相手に合わせる', score: 8 },
+        { label: 'C', text: '状況で変える', score: 10 },
+        { label: 'D', text: '任せがち', score: 6 },
       ]},
-      // 肉体 (4問)
-      { category: '肉体', text: 'ペニスの長さ（勃起時）は？', choices: [
-        { label: 'A', text: '〜11cm', score: 4 },
-        { label: 'B', text: '12〜14cm', score: 8 },
-        { label: 'C', text: '15〜17cm', score: 10 },
-        { label: 'D', text: '18cm〜', score: 8 },
+      { category: 'lead', text: '自分のテクニックへの自信', choices: [
+        { label: 'A', text: 'あまりない', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '自信あり', score: 10 },
+        { label: 'D', text: '波がある', score: 9 },
       ]},
-      { category: '肉体', text: '挿入から射精までの平均時間は？', choices: [
-        { label: 'A', text: '1分以内', score: 2 },
-        { label: 'B', text: '3〜5分', score: 6 },
-        { label: 'C', text: '10〜15分', score: 10 },
-        { label: 'D', text: '20分以上', score: 8 },
+      { category: 'knowledge', text: '女性が「気持ちいい」と感じやすい要素', choices: [
+        { label: 'A', text: 'テクニック', score: 8 },
+        { label: 'B', text: '時間', score: 7 },
+        { label: 'C', text: '安心感と雰囲気', score: 10 },
+        { label: 'D', text: '刺激の強さ', score: 9 },
       ]},
-      { category: '肉体', text: '体型の自己評価は？', choices: [
-        { label: 'A', text: '細身', score: 6 },
-        { label: 'B', text: '標準', score: 8 },
-        { label: 'C', text: '筋肉質', score: 10 },
-        { label: 'D', text: '太め', score: 3 },
+      { category: 'knowledge', text: '前戯の役割', choices: [
+        { label: 'A', text: '雰囲気づくり', score: 8 },
+        { label: 'B', text: '準備段階', score: 7 },
+        { label: 'C', text: '快感を高める重要パート', score: 10 },
+        { label: 'D', text: '流れの一部', score: 9 },
       ]},
-      { category: '肉体', text: '体力・スタミナの自己評価は？', choices: [
-        { label: 'A', text: 'すぐバテる', score: 2 },
-        { label: 'B', text: '普通', score: 6 },
-        { label: 'C', text: '体力がある方', score: 9 },
-        { label: 'D', text: '運動選手並み', score: 10 },
+      { category: 'experience', text: '経験人数', choices: [
+        { label: 'A', text: '0〜1', score: 6 },
+        { label: 'B', text: '2〜5', score: 8 },
+        { label: 'C', text: '6〜15', score: 10 },
+        { label: 'D', text: 'それ以上', score: 9 },
       ]},
-      // 属性 (4問)
-      { category: '属性', text: '職業は？', choices: [
-        { label: 'A', text: 'サラリーマン・会社員', score: 6 },
-        { label: 'B', text: '経営者・起業家', score: 10 },
-        { label: 'C', text: '医師・弁護士・士業', score: 9 },
-        { label: 'D', text: 'フリーター・学生', score: 3 },
+      { category: 'experience', text: '頻度', choices: [
+        { label: 'A', text: 'ほぼない', score: 5 },
+        { label: 'B', text: '月1〜2', score: 7 },
+        { label: 'C', text: '週1程度', score: 9 },
+        { label: 'D', text: 'それ以上', score: 10 },
       ]},
-      { category: '属性', text: '年収は？', choices: [
-        { label: 'A', text: '〜300万', score: 3 },
-        { label: 'B', text: '300〜600万', score: 6 },
-        { label: 'C', text: '600〜1000万', score: 9 },
-        { label: 'D', text: '1000万〜', score: 10 },
+      { category: 'body', text: '持続力（挿入〜フィニッシュ）', choices: [
+        { label: 'A', text: 'すぐ終わる', score: 5 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: 'コントロールできる', score: 10 },
+        { label: 'D', text: '長すぎる', score: 7 },
       ]},
-      { category: '属性', text: '年齢は？', choices: [
-        { label: 'A', text: '10代', score: 6 },
-        { label: 'B', text: '20代', score: 10 },
-        { label: 'C', text: '30代', score: 9 },
-        { label: 'D', text: '40代以上', score: 6 },
+      { category: 'body', text: 'サイズ自己評価', choices: [
+        { label: 'A', text: '小さい方', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: 'やや大きい', score: 10 },
+        { label: 'D', text: '大きい', score: 9 },
       ]},
-      { category: '属性', text: '見た目タイプは？', choices: [
-        { label: 'A', text: '清潔感系・爽やか', score: 9 },
-        { label: 'B', text: 'イケメン・ルックス自信あり', score: 10 },
-        { label: 'C', text: '個性的・ワイルド', score: 7 },
-        { label: 'D', text: '普通・目立たない', score: 5 },
+      { category: 'body', text: '勃起の安定感', choices: [
+        { label: 'A', text: '不安定', score: 5 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '安定している', score: 10 },
+        { label: 'D', text: '波がある', score: 7 },
+      ]},
+      { category: 'body', text: '体力・スタミナ', choices: [
+        { label: 'A', text: '低い', score: 5 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '高い', score: 10 },
+        { label: 'D', text: '波あり', score: 7 },
       ]},
     ];
 
     const femaleQuestions = [
-      // 知識 (4問)
-      { category: '知識', text: '男性の前立腺（Pスポット）の位置は？', choices: [
-        { label: 'A', text: '睾丸付近', score: 2 },
-        { label: 'B', text: '肛門内部（直腸前壁）', score: 10 },
-        { label: 'C', text: 'ペニスの根元', score: 2 },
-        { label: 'D', text: 'よく知らない', score: 0 },
+      { category: 'communication', text: '相手にどうしてほしいか', choices: [
+        { label: 'A', text: '言えない', score: 6 },
+        { label: 'B', text: 'なんとなく伝える', score: 8 },
+        { label: 'C', text: 'はっきり伝える', score: 10 },
+        { label: 'D', text: '雰囲気で察してほしい', score: 7 },
       ]},
-      { category: '知識', text: 'コンドームを正しく装着できる？', choices: [
-        { label: 'A', text: '完璧にできる', score: 10 },
-        { label: 'B', text: 'だいたいできる', score: 7 },
-        { label: 'C', text: '相手にやってもらう', score: 3 },
-        { label: 'D', text: 'わからない', score: 0 },
+      { category: 'communication', text: '気持ちいいときの反応', choices: [
+        { label: 'A', text: 'あまり出さない', score: 6 },
+        { label: 'B', text: '少し出す', score: 8 },
+        { label: 'C', text: 'しっかり表現する', score: 10 },
+        { label: 'D', text: '控えめ', score: 7 },
       ]},
-      { category: '知識', text: '女性のオーガズムの種類はいくつある？', choices: [
-        { label: 'A', text: '1種類', score: 3 },
-        { label: 'B', text: '2種類', score: 7 },
-        { label: 'C', text: '3種類以上', score: 10 },
-        { label: 'D', text: 'よく知らない', score: 0 },
+      { category: 'timing', text: '距離が縮まるタイミング', choices: [
+        { label: 'A', text: '相手任せ', score: 6 },
+        { label: 'B', text: '流れで', score: 8 },
+        { label: 'C', text: '雰囲気を見て判断', score: 10 },
+        { label: 'D', text: '慎重', score: 7 },
       ]},
-      { category: '知識', text: '男性が最も感じやすい部位は？', choices: [
-        { label: 'A', text: '亀頭', score: 6 },
-        { label: 'B', text: '裏筋', score: 10 },
-        { label: 'C', text: '睾丸', score: 3 },
-        { label: 'D', text: 'カリ首', score: 8 },
+      { category: 'lead', text: '自分の魅力の自覚', choices: [
+        { label: 'A', text: '自信ない', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '自信あり', score: 10 },
+        { label: 'D', text: '波あり', score: 9 },
       ]},
-      // 経験 (4問)
-      { category: '経験', text: 'これまでのパートナー人数は？', choices: [
-        { label: 'A', text: '0人', score: 3 },
-        { label: 'B', text: '1〜3人', score: 7 },
-        { label: 'C', text: '4〜10人', score: 10 },
-        { label: 'D', text: '11人以上', score: 8 },
+      { category: 'knowledge', text: '気持ちよさに影響する要素', choices: [
+        { label: 'A', text: 'テクニック', score: 8 },
+        { label: 'B', text: '相性', score: 9 },
+        { label: 'C', text: '雰囲気・安心感', score: 10 },
+        { label: 'D', text: '刺激', score: 7 },
       ]},
-      { category: '経験', text: 'セックスで毎回イく？', choices: [
-        { label: 'A', text: 'ほぼイかない', score: 4 },
-        { label: 'B', text: 'たまにイく', score: 7 },
-        { label: 'C', text: 'よくイく', score: 9 },
-        { label: 'D', text: '毎回イく', score: 10 },
+      { category: 'experience', text: '経験人数', choices: [
+        { label: 'A', text: '0〜1', score: 6 },
+        { label: 'B', text: '2〜5', score: 8 },
+        { label: 'C', text: '6〜15', score: 10 },
+        { label: 'D', text: 'それ以上', score: 9 },
       ]},
-      { category: '経験', text: '経験したことある上級プレイは？', choices: [
-        { label: 'A', text: 'コスプレ・ロールプレイ', score: 7 },
-        { label: 'B', text: '野外・ホテル外プレイ', score: 6 },
-        { label: 'C', text: 'アナルプレイ', score: 10 },
-        { label: 'D', text: '複数プレイ', score: 8 },
+      { category: 'body', text: 'バスト満足度', choices: [
+        { label: 'A', text: '不満', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '満足', score: 10 },
+        { label: 'D', text: 'かなり満足', score: 9 },
       ]},
-      { category: '経験', text: 'セックスで最長どれくらい続けた？', choices: [
-        { label: 'A', text: '15分以内', score: 4 },
-        { label: 'B', text: '30分程度', score: 7 },
-        { label: 'C', text: '1時間', score: 10 },
-        { label: 'D', text: '2時間以上', score: 9 },
-      ]},
-      // 肉体 (4問)
-      { category: '肉体', text: 'バストサイズは？', choices: [
-        { label: 'A', text: '〜Bカップ', score: 5 },
-        { label: 'B', text: 'Cカップ', score: 8 },
-        { label: 'C', text: 'Dカップ', score: 10 },
-        { label: 'D', text: 'Eカップ〜', score: 9 },
-      ]},
-      { category: '肉体', text: '感じやすさ（感度）の自己評価は？', choices: [
-        { label: 'A', text: '全然感じない', score: 3 },
-        { label: 'B', text: '普通', score: 6 },
+      { category: 'body', text: '感じやすさ', choices: [
+        { label: 'A', text: '感じにくい', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
         { label: 'C', text: '感じやすい', score: 10 },
-        { label: 'D', text: '超敏感', score: 9 },
+        { label: 'D', text: '波あり', score: 9 },
       ]},
-      { category: '肉体', text: 'ウエストサイズは？', choices: [
-        { label: 'A', text: '〜58cm', score: 10 },
-        { label: 'B', text: '59〜64cm', score: 9 },
-        { label: 'C', text: '65〜70cm', score: 6 },
-        { label: 'D', text: '71cm〜', score: 3 },
+      { category: 'body', text: '体型自己評価', choices: [
+        { label: 'A', text: '気になる', score: 6 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '自信あり', score: 10 },
+        { label: 'D', text: '部分的に自信', score: 9 },
       ]},
-      { category: '肉体', text: '肌の自己評価は？', choices: [
-        { label: 'A', text: '荒れ気味・くすみあり', score: 2 },
-        { label: 'B', text: '普通', score: 6 },
-        { label: 'C', text: 'きれい・整っている', score: 9 },
-        { label: 'D', text: 'ツルツル美肌', score: 10 },
-      ]},
-      // 属性 (4問)
-      { category: '属性', text: '職業は？', choices: [
-        { label: 'A', text: 'OL・会社員', score: 6 },
-        { label: 'B', text: '看護師・保育士', score: 8 },
-        { label: 'C', text: 'CA・アパレル・モデル', score: 10 },
-        { label: 'D', text: '経営者・フリーランス', score: 9 },
-      ]},
-      { category: '属性', text: '自分の外見タイプは？', choices: [
-        { label: 'A', text: '清楚系', score: 9 },
-        { label: 'B', text: '可愛い系', score: 10 },
-        { label: 'C', text: 'セクシー系', score: 9 },
-        { label: 'D', text: 'ナチュラル系', score: 7 },
-      ]},
-      { category: '属性', text: '年齢は？', choices: [
-        { label: 'A', text: '10代', score: 7 },
-        { label: 'B', text: '20代', score: 10 },
-        { label: 'C', text: '30代', score: 9 },
-        { label: 'D', text: '40代以上', score: 6 },
-      ]},
-      { category: '属性', text: '普段のファッション系統は？', choices: [
-        { label: 'A', text: 'フェミニン・お嬢様系', score: 9 },
-        { label: 'B', text: 'カジュアル・スポーツ系', score: 7 },
-        { label: 'C', text: 'モード・個性的', score: 8 },
-        { label: 'D', text: 'ギャル・セクシー系', score: 10 },
+      { category: 'body', text: 'コンディション管理', choices: [
+        { label: 'A', text: 'あまりしない', score: 5 },
+        { label: 'B', text: '普通', score: 8 },
+        { label: 'C', text: '意識している', score: 10 },
+        { label: 'D', text: 'かなり意識', score: 9 },
       ]},
     ];
 
-    const catColors = { '知識': '#a78bfa', '経験': '#f472b6', '肉体': '#fb923c', '属性': '#34d399' };
+    const categoryLabels = {
+      communication: 'コミュニケーション',
+      timing: 'タイミング',
+      lead: 'リード',
+      knowledge: '知識',
+      experience: '経験',
+      body: '肉体',
+    };
+
+    const catColors = {
+      communication: '#a78bfa',
+      timing: '#f472b6',
+      lead: '#fb7185',
+      knowledge: '#60a5fa',
+      experience: '#fb923c',
+      body: '#34d399',
+    };
 
     const gender = sessionStorage.getItem('sv_gender') || 'male';
     const questions = gender === 'female' ? femaleQuestions : maleQuestions;
+    const TOTAL = questions.length;
 
     let current = 0;
     let scores = [];
@@ -279,7 +256,7 @@
     function render() {
       const q = questions[current];
       document.getElementById('q-counter').textContent = `Q${current + 1} / ${TOTAL}`;
-      document.getElementById('q-category').textContent = q.category;
+      document.getElementById('q-category').textContent = categoryLabels[q.category] || q.category;
       document.getElementById('q-category').style.color = catColors[q.category] || '#fff';
       document.getElementById('q-number').textContent = `QUESTION ${String(current + 1).padStart(2, '0')}`;
       document.getElementById('q-text').textContent = q.text;
@@ -324,9 +301,12 @@
         const total = scores.reduce((a, b) => a + b, 0);
         const maxPossible = questions.reduce((acc, q) => acc + Math.max(...q.choices.map(c => c.score)), 0);
 
-        const catScores = { '知識': { score: 0, max: 0 }, '経験': { score: 0, max: 0 }, '肉体': { score: 0, max: 0 }, '属性': { score: 0, max: 0 } };
+        const catScores = {};
         questions.forEach((q, i) => {
           const maxS = Math.max(...q.choices.map(c => c.score));
+          if (!catScores[q.category]) {
+            catScores[q.category] = { score: 0, max: 0, label: categoryLabels[q.category] || q.category };
+          }
           catScores[q.category].score += scores[i];
           catScores[q.category].max += maxS;
         });

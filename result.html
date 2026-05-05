@@ -37,6 +37,24 @@
       <div class="rank-desc" id="rank-desc"></div>
     </div>
 
+    <div class="type-result-card">
+      <div class="type-kicker">YOUR TYPE</div>
+      <div class="type-name" id="type-name"></div>
+      <div class="type-copy" id="type-copy"></div>
+      <div class="consult-box">
+        <div class="consult-label">SEX偏差値向上コンサルプログラム</div>
+        <div class="consult-product" id="consult-product"></div>
+        <ul class="consult-list" id="consult-list"></ul>
+        <div class="consult-hook" id="consult-hook"></div>
+      </div>
+    </div>
+
+    <div class="consult-cta-card">
+      <p>あなたの偏差値は、行動を少し変えるだけで10以上伸びる可能性があります。</p>
+      <p>実際に多くの人が、「最初の5分の対応」を変えただけで結果を出しています。</p>
+      <a href="/consult" class="consult-cta" id="consult-cta" target="_blank" rel="noopener">あなた専用の改善ステップを見る（500円）</a>
+    </div>
+
     <div class="score-breakdown">
       <h3>カテゴリ別スコア</h3>
       <div class="score-bars" id="score-bars"></div>
@@ -127,19 +145,120 @@
     ];
 
     const catColors = {
-      '知識': 'linear-gradient(90deg, #a78bfa, #7c3aed)',
-      '経験': 'linear-gradient(90deg, #f472b6, #db2777)',
-      '肉体': 'linear-gradient(90deg, #fb923c, #ea580c)',
-      '属性': 'linear-gradient(90deg, #34d399, #059669)',
+      communication: 'linear-gradient(90deg, #a78bfa, #7c3aed)',
+      timing: 'linear-gradient(90deg, #f472b6, #db2777)',
+      lead: 'linear-gradient(90deg, #fb7185, #e11d48)',
+      knowledge: 'linear-gradient(90deg, #60a5fa, #2563eb)',
+      experience: 'linear-gradient(90deg, #fb923c, #ea580c)',
+      body: 'linear-gradient(90deg, #34d399, #059669)',
     };
 
-    const catOrder = ['知識', '経験', '肉体', '属性'];
+    const catOrder = ['communication', 'timing', 'lead', 'knowledge', 'experience', 'body'];
+
+    const categoryLabels = {
+      communication: 'コミュニケーション',
+      timing: 'タイミング',
+      lead: 'リード',
+      knowledge: '知識',
+      experience: '経験',
+      body: '肉体',
+    };
+
+    const typeResults = {
+      'バランス型': {
+        title: 'あなたは「総合力が高いバランス型」です。',
+        body: [
+          'コミュニケーション・タイミング・リード力のバランスが良く、相手にとって“安心できて、かつ満足度も高い存在”になりやすいタイプです。',
+          'ただし、すべてが平均以上である反面、「強く印象に残る決定打」に欠ける傾向があります。',
+          '実際にはあと一歩で「忘れられない存在」になれるポテンシャルがあります。',
+        ],
+        product: '一段上に抜ける“決定打スキル”',
+        items: ['相手の記憶に残る一言', '雰囲気を一気に引き上げるスイッチ', '“また会いたい”と思わせる締め方'],
+        hook: '上位20%に入るには“あと1つの差”です。',
+        url: 'https://note.com/dg121/n/n9ff3d5d1a52c?sub_rt=share_sb',
+      },
+      '安心感特化型': {
+        title: 'あなたは「安心感を与えるのが非常に得意なタイプ」です。',
+        body: [
+          '一緒にいて落ち着く、居心地がいいと思われやすく、初対面でも好印象を持たれることが多いでしょう。',
+          'ただしその反面、“いい人止まり”になりやすい傾向があります。',
+          '特に「距離を縮める決断」と「一歩踏み込むタイミング」で慎重になりすぎている可能性があります。',
+        ],
+        product: 'いい人から抜ける“3つの踏み込み方”',
+        items: ['距離を縮める具体タイミング', '雰囲気を変える一言', '相手に“意識させる”行動'],
+        hook: '優しさだけでは“選ばれない”理由、知っていますか？',
+        url: 'https://note.com/dg121/n/n4e98293987f5?sub_rt=share_pb',
+      },
+      'リード強め型': {
+        title: 'あなたは「主導力が強いリード型」です。',
+        body: [
+          '自分から流れを作ることができ、相手にとって頼れる存在として見られやすいタイプです。',
+          'ただしその一方で、“押しが強すぎる”と感じられている可能性があります。',
+          '良かれと思った行動が、実は相手のペースを無視している場面もあるかもしれません。',
+        ],
+        product: '押しすぎず刺さる“コントロール術”',
+        items: ['相手に合わせる強弱調整', '引くタイミングの見極め', '主導権を保ちながら好感度を上げる方法'],
+        hook: 'そのリード、“逆効果”になっているかもしれません。',
+        url: 'https://note.com/dg121/n/n8990d454bd6b?sub_rt=share_pb',
+      },
+      '空気読みすぎ型': {
+        title: 'あなたは「相手の気持ちを読む力が高いタイプ」です。',
+        body: [
+          '細かい変化に気づき、相手に合わせることができるため、トラブルになりにくい安定感があります。',
+          'しかしその反面、“受け身になりすぎてチャンスを逃す”傾向があります。',
+          '本来の魅力を出しきれていない可能性が高いです。',
+        ],
+        product: '受け身から抜ける“自然な主導の取り方”',
+        items: ['無理なくリードする方法', 'タイミングを逃さない判断軸', '相手に委ねすぎない距離感'],
+        hook: '“いい人”なのに選ばれない理由、ここにあります。',
+        url: 'https://note.com/dg121/n/n95ca84c5b3dd?sub_rt=share_pb',
+      },
+      'ポテンシャル未開放型': {
+        title: 'あなたは「まだ伸びしろが大きいタイプ」です。',
+        body: [
+          '現時点では経験・自信・理解のバランスが十分とは言えませんが、逆に言えば短期間で大きく変われる余地があります。',
+          '実際、このタイプはちょっとした意識と行動の変化だけで偏差値が大きく伸びる傾向があります。',
+        ],
+        product: 'ゼロから伸ばす“最短改善ルート”',
+        items: ['まず最初にやるべき3ステップ', 'NG行動の回避', '自信をつける具体方法'],
+        hook: 'このままで終わるか、ここから変わるか。',
+        url: 'https://note.com/dg121/n/nc8ee1981ae76?sub_rt=share_sb',
+      },
+    };
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
 
     function calcHensachi(total, max) {
       const ratio = total / max;
-      const base = 20 + ratio * 60;
-      const noise = (Math.random() * 6) - 3;
-      return Math.round(Math.min(82, Math.max(18, base + noise)));
+      const base = 35 + ratio * 40;
+      const noise = Math.random() * 3 - 1.5;
+      return Math.round(clamp(base + noise, 30, 80));
+    }
+
+    function getTypeName(hensachi) {
+      if (hensachi >= 65) return 'バランス型';
+      if (hensachi >= 55) return '安心感特化型';
+      if (hensachi >= 50) return 'リード強め型';
+      if (hensachi >= 45) return '空気読みすぎ型';
+      return 'ポテンシャル未開放型';
+    }
+
+    function renderTypeResult(hensachi) {
+      const typeName = getTypeName(hensachi);
+      const type = typeResults[typeName];
+
+      document.getElementById('type-name').textContent = typeName;
+      document.getElementById('type-copy').innerHTML = [type.title, ...type.body]
+        .map(text => `<p>${text}</p>`)
+        .join('');
+      document.getElementById('consult-product').textContent = type.product;
+      document.getElementById('consult-list').innerHTML = type.items
+        .map(item => `<li>${item}</li>`)
+        .join('');
+      document.getElementById('consult-hook').textContent = type.hook;
+      document.getElementById('consult-cta').href = type.url;
     }
 
     function init() {
@@ -175,6 +294,7 @@
 
       document.getElementById('rank-name').textContent = rank.name;
       document.getElementById('rank-desc').textContent = rank.desc;
+      renderTypeResult(hensachi);
 
       // Category bars
       const barsEl = document.getElementById('score-bars');
@@ -183,11 +303,12 @@
         const val = catScores[cat];
         if (!val) return;
         const pctCat = val.max > 0 ? Math.round((val.score / val.max) * 100) : 0;
+        const label = val.label || categoryLabels[cat] || cat;
         const item = document.createElement('div');
         item.className = 'score-bar-item';
         item.innerHTML = `
           <div class="score-bar-label">
-            <span>${cat}</span>
+            <span>${label}</span>
             <span>${pctCat}%</span>
           </div>
           <div class="score-bar-track">
